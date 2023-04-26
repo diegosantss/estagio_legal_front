@@ -10,7 +10,7 @@ import Menu from '@/components/template/Menu.vue';
 export default {
   name: 'App',
   data: () => ({
-    
+
   }),
   components: {
     Menu
