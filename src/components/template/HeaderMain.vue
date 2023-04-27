@@ -1,5 +1,7 @@
 <template>
-  <div class='header'>
+  <div class='header'
+  
+  >
       <h1>{{titulo}}</h1>
   </div>
 </template>

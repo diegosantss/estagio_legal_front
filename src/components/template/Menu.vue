@@ -3,7 +3,9 @@
   <div class="menu" :class="{ 'small-menu': smallMenu }">
     <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
     
-    <IconeUsuario/>
+    <IconeUsuario
+    :smallMenu="smallMenu"
+    />
     
     <MenuItem
       v-for="(item, index) in menuTree"

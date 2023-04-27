@@ -1,5 +1,8 @@
 <template>
-    <div class="info_user">
+    <div class="info_user"
+    :smallMenu="smallMenu"
+    :class="{'icone-reduzido':smallMenu}"
+    >
         <i class="material-icons">account_circle </i>
         <h1>{{titulo}}</h1>
         
@@ -11,12 +14,22 @@
     data(){
       return{
         titulo: 'Usuario: Sergio',
+        iconeReduzido: false
       }
+    },
+    props:{
+      smallMenu: {
+      type: Boolean,
+    },
     }
   }
   </script>
   
   <style scoped>
+    .icone-reduzido h1{
+      overflow: hidden;
+    }
+
     .info_user{
     width: 100%;
     display: flex;
