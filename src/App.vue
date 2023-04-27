@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <Menu />
+    <Header/>
+    <Menu/>
+    
   </div>
 </template>
 
 <script>
 import Menu from '@/components/template/Menu.vue';
+import Header from '@/components/template/HeaderMain.vue';
 
 export default {
   name: 'App',
@@ -13,7 +16,8 @@ export default {
 
   }),
   components: {
-    Menu
+    Menu,
+    Header,
   }
 }
 </script>

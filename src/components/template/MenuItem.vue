@@ -105,6 +105,7 @@ export default {
     white-space: nowrap;
     user-select: none;
     height: 50px;
+    
     padding: 0 20px;
     box-sizing: border-box;
     font-size: 14px;

@@ -3,6 +3,8 @@
   <div class="menu" :class="{ 'small-menu': smallMenu }">
     <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
     
+    <IconeUsuario/>
+    
     <MenuItem
       v-for="(item, index) in menuTree"
       :key="index"
@@ -19,6 +21,7 @@
 
 <script>
 import MenuItem from '@/components/template/MenuItem.vue';
+import IconeUsuario from '@/components/user/IconeUsuario.vue'
 
 export default {
   name: 'recursive-menu',
@@ -92,7 +95,8 @@ export default {
     ]
   }),
   components: {
-    MenuItem
+    MenuItem,
+    IconeUsuario,
   }
 }
 </script>
