@@ -3,9 +3,8 @@
     <div
       class="label"
       @click="toggleMenu()"
-      :style="{ paddingLeft: depth * 20 + 20 + 'px' }"
     >
-      <div class="left">
+      <div class="left" :class="{'childItem': depth>0 }">
         <i v-if="icon" class="material-icons-outlined">{{ icon }}</i>
         <span v-if="showLabel">{{ label }}</span>
       </div>
@@ -97,6 +96,17 @@ export default {
 .menu-item {
   position: relative;
   width: 100%;
+
+  .childItem{
+    color: #6e6e6e;
+  }
+  .childItem:hover {
+    color: #073F07;
+  }
+
+  .childItem:hover i {
+    color: #073F07;
+  }
   .label {
     width: 100%;
     display: flex;
@@ -109,7 +119,7 @@ export default {
     padding: 0 20px;
     box-sizing: border-box;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #ffffff;
     transition: all 0.3s ease;
 > div {
       display: flex;
@@ -151,10 +161,6 @@ export default {
       background: #fff;
       box-shadow: 0 0 10px #ebebeb;
       top: 0;
-      .label {
-        width: 100% !important;
-        padding-left: 20px !important;
-      }
     }
   }
   

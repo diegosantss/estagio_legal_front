@@ -4,6 +4,7 @@
     <div class="logo">
       <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
     </div>
+    
     <IconeUsuario
     :smallMenu="smallMenu"
     />
@@ -17,15 +18,15 @@
       :depth="0"
       :smallMenu="smallMenu"
     />
-    <i @click="responsividadeComponentes" class="expand material-icons" :class="{ expand: expanded }">arrow_circle_right</i>
+    <i @click="responsividadeComponentes" class="expand material-icons" :class="{ expand: expanded }">arrow_circle_left</i>
     
   </div>
 </template>
 
 <script>
-import barramento from '@/barramento'
+import barramento from '@/barramento';
 import MenuItem from '@/components/template/MenuItem.vue';
-import IconeUsuario from '@/components/user/IconeUsuario.vue'
+import IconeUsuario from '@/components/user/IconeUsuario.vue';
 
 export default {
   name: 'recursive-menu',
@@ -110,14 +111,15 @@ export default {
   justify-content: center;
   height: 8%;
   width: 100%;
-  border-bottom: 1.5px solid #C5E9BB;
+  border-bottom: 1.8px solid #C5E9BB;
   
 }
 .logo img{
   transition: all .3s ease;
-  width: 15%;
-  height: 100%;
+  width: 2.5vw;
+  height: 9vh;
   top: 0%;
+  padding-bottom: 1dvh;
   
 }
 .menu {
@@ -144,9 +146,6 @@ export default {
     cursor: pointer;
     transition: all .3s ease;
     color: #e2d4d4;
-    &.expand {
-      transform: rotate(180deg);
-    }
     
   }
 
@@ -156,19 +155,26 @@ export default {
     padding-top: 10px;
     i {
       left: 12px;
+      transform: rotate(180deg);
+    
     }
     .logo{
       height: 7%;
     }
     .logo img{
       transition: all .3s ease;
-      width: 55%;
-      height: 100%;
+      width: 1.9vw;
+      height: 7.5vh;
       top: 0%;
       // width: 65%;
       // height: 100%;
       // transition: all .3s ease;
     }
+    
   }
+
+
 }
+
+
 </style>

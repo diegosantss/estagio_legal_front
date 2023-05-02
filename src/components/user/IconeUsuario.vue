@@ -43,11 +43,15 @@
     font-size: 14px;
     color: #FFFFFF;
     transition: all 0.3s ease;
+    margin-top: 18px;
+    margin-bottom: 18px;
     }
 
     h1{
         font-size: 20px;
         margin-left: 0px;
+        font-family: 'Montserrat';
+        font-weight: 400;
     }
 
     i{
