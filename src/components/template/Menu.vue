@@ -1,8 +1,9 @@
 
 <template>
   <div class="menu" :class="{ 'small-menu': smallMenu }">
-    <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
-    
+    <div class="logo">
+      <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
+    </div>
     <IconeUsuario
     :smallMenu="smallMenu"
     />
@@ -16,25 +17,19 @@
       :depth="0"
       :smallMenu="smallMenu"
     />
-    <i @click="smallMenu = !smallMenu" class="expand material-icons" :class="{ expand: expanded }">arrow_circle_right</i>
+    <i @click="responsividadeComponentes" class="expand material-icons" :class="{ expand: expanded }">arrow_circle_right</i>
     
   </div>
 </template>
 
 <script>
+import barramento from '@/barramento'
 import MenuItem from '@/components/template/MenuItem.vue';
 import IconeUsuario from '@/components/user/IconeUsuario.vue'
 
 export default {
   name: 'recursive-menu',
   data: () => ({
-    watch:{
-      smallMenu(value){
-        if(value){
-          this.expanded = this.expanded == true ? true : false;
-        }
-      }
-    },
     expanded: false,
     smallMenu: false,
     menuTree: [
@@ -99,19 +94,31 @@ export default {
   components: {
     MenuItem,
     IconeUsuario,
+  },
+  methods:{
+    responsividadeComponentes(){
+      this.smallMenu = !this.smallMenu;
+      barramento.emitSmallMenu(this.smallMenu);
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-img{
-  transition: all .5s ease;
-  width: 28%;
-  height: 18%;
-  left: 36.91%;
-  right: 36.44%;
+.logo{
+  display: flex;
+  justify-content: center;
+  height: 8%;
+  width: 100%;
+  border-bottom: 1.5px solid #C5E9BB;
+  
+}
+.logo img{
+  transition: all .3s ease;
+  width: 15%;
+  height: 100%;
   top: 0%;
-  bottom: 87.65%;
+  
 }
 .menu {
   display: flex;
@@ -126,7 +133,7 @@ img{
   border-right: 1px solid #ececec;
   transition: all .3s ease;
   overflow: auto;
-  background-color: #5CB85C;
+  background-color: #4a934a;
 
   i {
     position: fixed;
@@ -150,10 +157,17 @@ img{
     i {
       left: 12px;
     }
-    img{
-      width: 50%;
-      height: 8%;
+    .logo{
+      height: 7%;
+    }
+    .logo img{
       transition: all .3s ease;
+      width: 55%;
+      height: 100%;
+      top: 0%;
+      // width: 65%;
+      // height: 100%;
+      // transition: all .3s ease;
     }
   }
 }

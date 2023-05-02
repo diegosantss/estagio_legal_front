@@ -19,8 +19,8 @@
     },
     props:{
       smallMenu: {
-      type: Boolean,
-    },
+        type: Boolean,
+      },
     }
   }
   </script>
