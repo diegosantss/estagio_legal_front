@@ -26,8 +26,9 @@ export default {
   display: flex;
 }
 .header{
-  width: 100%;
+  /* width: 100%; */
   margin-left: 15.5vw;
+  margin-bottom: 5vw;
   top: 0;
   right: 0;
   height: 8vh;
