@@ -10,7 +10,7 @@
       </button>
     </div>
 
-    <div class="nav__list" :class="{'hideIcons':is_expanded}">
+    <div class="nav__list" :class="{'hideLabel':is_expanded}">
       <div class="nav__items">
         <h3 class="nav__subtitle">Menu</h3>
 
@@ -27,12 +27,15 @@
                 to="/formularioObrigatorio"
                 class="nav__dropdown-item"
               >
-                Obrigatório</router-link
-              >
+              <i class="material-icons">event_available</i>
+                Obrigatório
+              </router-link>
+
               <router-link
                 to="/formularioObrigatorio"
                 class="nav__dropdown-item"
               >
+              <i class="material-icons">calendar_today</i>
                 Não Obrigatório</router-link
               >
             </div>
@@ -48,21 +51,21 @@
 
           <div class="nav__dropdown-collapse">
             <div class="nav__dropdown-content">
-              <i class="material-icons">event_available</i>
-              <router-link to="/" class="nav__dropdown-item"
-                >Emitir Atestado de Estágio</router-link
-              >
+              <router-link to="/" class="nav__dropdown-item">
+                <i class="material-icons">workspace_premium</i>  
+                <p>Emitir Atestado de Estágio </p>
+              </router-link>
             </div>
           </div>
         </div>
 
         <a href="#" class="nav__link">
-          <i class="material-icons">task</i>
+          <i class="material-icons">schedule</i>
           <span class="nav__name">Acompanhar Processos</span>
         </a>
 
         <a href="#" class="nav__link">
-          <i class="material-icons">task</i>
+          <i class="material-icons">settings</i>
           <span class="nav__name">Configurações</span>
         </a>
       </div>
@@ -124,8 +127,9 @@ const ToggleMenu = () => {
 
 .nav__link {
   display: flex;
-  align-items: center;
+  text-decoration: none;
   color: var(--text-color);
+  
 }
 
 .nav__link:hover {
@@ -141,6 +145,7 @@ const ToggleMenu = () => {
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   white-space: nowrap;
+  display: none;
 }
 
 .nav__logout {
@@ -161,7 +166,11 @@ const ToggleMenu = () => {
 }
 
 .nav__dropdown-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  grid-template-areas: 1fr 1fr;
   row-gap: 0.5rem;
   padding: 0.75rem 2.5rem 0.75rem 1.8rem;
   color: #656161;
@@ -185,9 +194,18 @@ const ToggleMenu = () => {
 }
 
 .nav__dropdown-item {
+  display: flex;
+ 
+  align-items: center;
+  text-decoration: none;
+  
   font-size: var(--smaller-font-size);
   font-weight: var(--font-medium);
   color: #656161;
+}
+
+.nav__dropdown-item i{
+  margin-right: 10px;
 }
 
 .nav__dropdown-item:hover {
@@ -197,6 +215,7 @@ const ToggleMenu = () => {
 .nav__dropdown-icon {
   margin-left: auto;
   transition: 0.4s;
+  
 }
 
 /* Show dropdown collapse */
@@ -336,6 +355,14 @@ aside {
         transform: rotate(-180deg);
       }
     }
+
+    .nav__name {
+      font-size: var(--small-font-size);
+      font-weight: var(--font-medium);
+      white-space: nowrap;
+      display: unset;
+    }
+
 
     h3,
     .button .text {
