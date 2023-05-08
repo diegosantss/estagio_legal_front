@@ -3,9 +3,8 @@
     <div
       class="label"
       @click="toggleMenu()"
-      :style="{ paddingLeft: depth * 20 + 20 + 'px' }"
     >
-      <div class="left">
+      <div class="left" :class="{'childItem': depth>0 }">
         <i v-if="icon" class="material-icons-outlined">{{ icon }}</i>
         <span v-if="showLabel">{{ label }}</span>
       </div>
@@ -57,7 +56,7 @@ export default {
     },
     smallMenu: {
       type: Boolean,
-    },
+    }
   },
   computed: {
     showLabel() {
@@ -97,6 +96,22 @@ export default {
 .menu-item {
   position: relative;
   width: 100%;
+
+  .childItem{
+    color: #373636;
+  }
+
+  .childItem i {
+    color: #373636 !important;
+  }
+  
+  .childItem:hover {
+    color: #073F07;
+  }
+
+  .childItem:hover i {
+    color: #073F07 !important;
+  }
   .label {
     width: 100%;
     display: flex;
@@ -105,19 +120,20 @@ export default {
     white-space: nowrap;
     user-select: none;
     height: 50px;
+    
     padding: 0 20px;
     box-sizing: border-box;
     font-size: 14px;
-    color: #6a6a6a;
+    color: #ffffff;
     transition: all 0.3s ease;
-    > div {
+> div {
       display: flex;
       align-items: center;
       gap: 10px;
     }
     i {
       font-size: 20px;
-      color: #6e6e6e;
+      color: #e4e4e4;
       transition: all 0.3s ease;
       &.expand {
         font-size: 16px;
@@ -131,7 +147,7 @@ export default {
       width: fit-content;
     }
     &:hover {
-      background: #deedff;
+      background: #deedff68;
       cursor: pointer;
     }
   }
@@ -140,17 +156,19 @@ export default {
     left: calc(100% + 6px);
     transition: height 0.3s ease;
     overflow: hidden;
+    background: linear-gradient(108.65deg, #FFFFFF 1.89%, rgba(255, 255, 255, 0.74) 100%);  
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
     &.small-menu {
       width: fit-content;
       position: absolute;
       background: #fff;
       box-shadow: 0 0 10px #ebebeb;
       top: 0;
-      .label {
-        width: 100% !important;
-        padding-left: 20px !important;
-      }
+      transition: all .3s ease;
     }
   }
+  
 }
 </style>
