@@ -2,7 +2,7 @@
 <template>
   <div class="menu" :class="{ 'small-menu': smallMenu }">
     <div class="logo">
-      <img src="@/assets/Logo-IFPA.png" alt="logo-ifpa">
+      <img src="../../assets/Logo-IFPA.png" alt="logo-ifpa">
     </div>
     
     <IconeUsuario
@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import barramento from '@/barramento';
-import MenuItem from '@/components/template/MenuItem.vue';
-import IconeUsuario from '@/components/user/IconeUsuario.vue';
+import barramento from '../../barramento';
+import MenuItem from '../../components/template/MenuItem.vue';
+import IconeUsuario from '../../components/user/IconeUsuario.vue';
 
 export default {
   name: 'recursive-menu',
@@ -156,10 +156,12 @@ export default {
     i {
       left: 12px;
       transform: rotate(180deg);
+      transition: all .3s ease;
     
     }
     .logo{
       height: 7%;
+      transition: all .3s ease;
     }
     .logo img{
       transition: all .3s ease;
@@ -169,6 +171,7 @@ export default {
       // width: 65%;
       // height: 100%;
       // transition: all .3s ease;
+      transition: all .3s ease;
     }
     
   }

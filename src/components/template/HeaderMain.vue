@@ -5,18 +5,12 @@
 </template>
 
 <script>
-import barramento from '@/barramento'
 export default {
   data(){
     return{
       titulo: 'ESTAGIO LEGAL',
       localSmallMenu: false,
     }
-  },
-  created(){
-    barramento.onSmallMenu(smallMenu =>{
-      this.localSmallMenu = smallMenu;
-    });
   }
 }
 </script>
@@ -27,8 +21,9 @@ export default {
 }
 .header{
   /* width: 100%; */
-  margin-left: 15.5vw;
-  margin-bottom: 5vw;
+  /* margin-left: 15.5vw; */
+  border-bottom: 12vw;
+  margin-bottom: 2vw;
   top: 0;
   right: 0;
   height: 8vh;
@@ -40,6 +35,7 @@ export default {
   align-content: center;
   display: flex;
   align-items: center;
+
 }
 .header h1{
   font-weight: 600;
@@ -51,7 +47,7 @@ export default {
 }
 
 .localSmallMenu{
-  margin-left: 3vw;
+  /* margin-left: 3vw; */
   transition: all .3s ease;
   height: 8.35vh;
 }

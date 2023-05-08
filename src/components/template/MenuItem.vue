@@ -56,7 +56,7 @@ export default {
     },
     smallMenu: {
       type: Boolean,
-    },
+    }
   },
   computed: {
     showLabel() {
@@ -98,14 +98,19 @@ export default {
   width: 100%;
 
   .childItem{
-    color: #6e6e6e;
+    color: #373636;
   }
+
+  .childItem i {
+    color: #373636 !important;
+  }
+  
   .childItem:hover {
     color: #073F07;
   }
 
   .childItem:hover i {
-    color: #073F07;
+    color: #073F07 !important;
   }
   .label {
     width: 100%;
@@ -128,7 +133,7 @@ export default {
     }
     i {
       font-size: 20px;
-      color: #6e6e6e;
+      color: #e4e4e4;
       transition: all 0.3s ease;
       &.expand {
         font-size: 16px;
@@ -161,6 +166,7 @@ export default {
       background: #fff;
       box-shadow: 0 0 10px #ebebeb;
       top: 0;
+      transition: all .3s ease;
     }
   }
   
