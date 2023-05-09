@@ -1,7 +1,9 @@
 <template>
   <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
     <div class="logo">
-      <img :src="logoURL" alt="Vue" />
+      <router-link to="/">
+        <img :src="logoURL" alt="Vue"/>
+      </router-link>
     </div>
 
     <div class="menu-toggle-wrap">
@@ -16,7 +18,7 @@
         <h3 class="nav__subtitle">Menu</h3>
         <div class="nav__dropdown" @click="expandOptionInicioEstagio = !expandOptionInicioEstagio">
           <a href="#" class="nav__link">
-            <i class="material-icons">task</i>
+            <span class="material-icons">note_add</span>
             <span class="nav__name">Inicio de Estágio</span>
           </a>
           <div class="nav__dropdown-collapse">
@@ -51,7 +53,7 @@
 
           <div class="nav__dropdown-collapse">
             <div class="nav__dropdown-content" :class="{'expand-option': expandOptionFimEstagio}">
-              <router-link to="/" class="nav__dropdown-item">
+              <router-link to="" class="nav__dropdown-item">
                 <i class="material-icons">workspace_premium</i>  
                 <p>Emitir Atestado de Estágio </p>
               </router-link>
@@ -103,11 +105,6 @@ const ToggleMenu = () => {
   display: none;
 }
 
-.nav__logo {
-  font-weight: var(--font-semi-bold);
-  margin-bottom: 2.5rem;
-}
-
 .nav__list,
 .nav__items {
   display: grid;
@@ -131,6 +128,7 @@ const ToggleMenu = () => {
 
 .nav__link {
   display: flex;
+  align-items: center;
   text-decoration: none;
   color: var(--text-color);
   
@@ -174,9 +172,6 @@ const ToggleMenu = () => {
 }
 
 ///////////////aqui
-.nav__dropdown-content.expand-option{
-  
-}
 
 .nav__dropdown-content{
   display: none;
@@ -244,6 +239,7 @@ aside {
       width: 2rem;
     }
   }
+  
 
   .menu-toggle-wrap {
     display: flex;
@@ -377,6 +373,7 @@ aside {
       font-weight: var(--font-medium);
       white-space: nowrap;
       display: unset;
+      padding-left: 3%;
     }
 
 
