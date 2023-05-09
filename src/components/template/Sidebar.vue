@@ -11,46 +11,46 @@
     </div>
 
     <div class="nav__list" :class="{'hideLabel':is_expanded}">
+      
       <div class="nav__items">
         <h3 class="nav__subtitle">Menu</h3>
-
-        <div class="nav__dropdown">
+        <div class="nav__dropdown" @click="expandOptionInicioEstagio = !expandOptionInicioEstagio">
           <a href="#" class="nav__link">
             <i class="material-icons">task</i>
             <span class="nav__name">Inicio de Estágio</span>
           </a>
-
           <div class="nav__dropdown-collapse">
-            <div class="nav__dropdown-content">
-              <i class="material-icons"></i>
-              <router-link
-                to="/formularioObrigatorio"
-                class="nav__dropdown-item"
-              >
-              <i class="material-icons">event_available</i>
-                Obrigatório
-              </router-link>
-
-              <router-link
-                to="/formularioObrigatorio"
-                class="nav__dropdown-item"
-              >
-              <i class="material-icons">calendar_today</i>
-                Não Obrigatório</router-link
-              >
-            </div>
+          <div class="nav__dropdown-content" :class="{'expand-option': expandOptionInicioEstagio}">
+            <i class="material-icons"></i>
+            <router-link
+              to="/formularioObrigatorio"
+              class="nav__dropdown-item"
+            >
+            <i class="material-icons">event_available</i>
+              Obrigatório
+            </router-link>
+  
+            <router-link
+              to="/formularioObrigatorio"
+              class="nav__dropdown-item"
+            >
+            <i class="material-icons">calendar_today</i>
+              Não Obrigatório</router-link
+            >
+          </div>
           </div>
         </div>
 
+
         <!-- fim estagio -->
-        <div class="nav__dropdown">
+        <div class="nav__dropdown" @click="expandOptionFimEstagio = !expandOptionFimEstagio">
           <a href="#" class="nav__link">
             <i class="material-icons">task</i>
             <span class="nav__name">Fim de Estágio</span>
           </a>
 
           <div class="nav__dropdown-collapse">
-            <div class="nav__dropdown-content">
+            <div class="nav__dropdown-content" :class="{'expand-option': expandOptionFimEstagio}">
               <router-link to="/" class="nav__dropdown-item">
                 <i class="material-icons">workspace_premium</i>  
                 <p>Emitir Atestado de Estágio </p>
@@ -87,11 +87,14 @@
 import { ref } from "vue";
 import logoURL from "../../assets/Logo-IFPA.png";
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
+const expandOptionInicioEstagio = ref(false);
+const expandOptionFimEstagio = ref(false);
 
 const ToggleMenu = () => {
   is_expanded.value = !is_expanded.value;
   localStorage.setItem("is_expanded", is_expanded.value);
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -112,6 +115,7 @@ const ToggleMenu = () => {
 
 .nav__list {
   row-gap: 2.5rem;
+  flex-direction: column;
 }
 
 .nav__items {
@@ -153,40 +157,29 @@ const ToggleMenu = () => {
 }
 
 /* Dropdown */
-.nav__dropdown {
+.nav__dropdown.expand-option{
   overflow: hidden;
   max-height: 21px;
   transition: 0.4s ease-in-out;
 }
 
-.nav__dropdown-collapse {
+.nav__dropdown-collapse.expand-option {
   background-color: var(--first-color-light);
   border-radius: 0.25rem;
   margin-top: 1rem;
 }
 
-.nav__dropdown-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  grid-template-areas: 1fr 1fr;
-  row-gap: 0.5rem;
-  padding: 0.75rem 2.5rem 0.75rem 1.8rem;
-  color: #656161;
+.nav__dropdown-collapse{
+  position: relative;
+}
 
-  width: 100%;
-  left: calc(100% + 6px);
-  transition: height 0.3s ease;
-  overflow: hidden;
-  background: linear-gradient(
-    108.65deg,
-    #ffffff 1.89%,
-    rgba(255, 255, 255, 0.74) 100%
-  );
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+///////////////aqui
+.nav__dropdown-content.expand-option{
+  
+}
+
+.nav__dropdown-content{
+  display: none;
 }
 
 .nav__dropdown-content:hover{
@@ -195,7 +188,6 @@ const ToggleMenu = () => {
 
 .nav__dropdown-item {
   display: flex;
- 
   align-items: center;
   text-decoration: none;
   
@@ -219,7 +211,7 @@ const ToggleMenu = () => {
 }
 
 /* Show dropdown collapse */
-.nav__dropdown:hover {
+.nav__dropdown.expand-option {
   max-height: 100rem;
 }
 
@@ -237,7 +229,6 @@ aside {
   color: var(--light);
 
   width: calc(2rem + 32px);
-  overflow: hidden;
   min-height: 100vh;
   padding: 1rem;
 
@@ -348,6 +339,31 @@ aside {
   &.is-expanded {
     width: var(--sidebar-width);
 
+    .nav__dropdown-content.expand-option{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      grid-template-areas: 1fr 1fr;
+      row-gap: 0.5rem;
+      padding: 0.75rem 2.5rem 0.75rem 1.8rem;
+      color: #656161;
+      height: auto;
+      margin-top: 4%;
+      width: 100%;
+      left: calc(100% + 6px);
+      transition: height 0.3s ease;
+      overflow: hidden;
+      background: linear-gradient(
+        108.65deg,
+        #ffffff 1.89%,
+        rgba(255, 255, 255, 0.74) 100%
+      );
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+        inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+    }
+    
     .menu-toggle-wrap {
       top: -3rem;
 
@@ -384,5 +400,48 @@ aside {
     position: absolute;
     z-index: 99;
   }
+}
+
+aside:not(.is-expanded) {
+  .nav__dropdown-content.expand-option{
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    grid-template-areas: 1fr 1fr;
+    row-gap: 0.5rem;
+    padding: 0.75rem 3.5rem 0.75rem 1.8rem;
+    margin-bottom: 0%;
+    color: #656161;
+    height: auto;
+    position: absolute;
+    z-index: 9999;
+    width: fit-content;
+    left: calc(100% + 6px);
+    top: calc(100% - 38px);
+    transition: height 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    background: linear-gradient(
+      108.65deg,
+      #ffffff 1.89%,
+      rgba(255, 255, 255, 0.26) 100%
+    );
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.623), 0px 2px 2px rgba(0, 0, 0, 0.25),
+      inset 0px 2px 2px rgba(0, 0, 0, 0.25), inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+
+    .nav__dropdown{
+      display: flex;
+      align-items: space-around;
+      /* width: fit-content; */
+      
+    }
+
+    .nav__dropdown-collapse{
+      margin-left: 20px;
+
+    }
 }
 </style>
