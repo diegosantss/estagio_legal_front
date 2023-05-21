@@ -5,13 +5,11 @@
       <h1>Bem vindo(a) ao Sistema de Gerênciamento de Estágio do IFPA</h1>
     </div>
     <div class="right">
-    <button></button>
+    <button @click="dinamicRoute = '/formularioRegister'">Teste</button>
 
-      <router-link
-        v-bind:to="dinamicRoute"
-        class="nav__dropdown-item"
-      />
-      <!-- <TemplateLogin/> -->
+    <TemplateLogin v-if="dinamicRoute === '/formularioLogin'"/>
+
+    <TemplateRegister v-else/>
 
     </div>
   </div>
@@ -20,14 +18,16 @@
 <script>
 
 import TemplateLogin from '../components/template/TemplateLogin.vue';
+import TemplateRegister from '../components/template/TemplateRegister.vue'
 
   export default {
     data: () => ({
       localSmallMenu: false,
-      dinamicRoute: ''
+      dinamicRoute: '/formularioLogin'
     }),
     components: {
-      TemplateLogin
+      TemplateLogin,
+      TemplateRegister
     }
   }
 </script>

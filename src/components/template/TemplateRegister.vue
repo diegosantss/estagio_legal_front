@@ -6,31 +6,31 @@
   <br>
   <div class="input_container">
     <label class="input_label" for="name_field">Nome</label>
-    <input placeholder="Nome" title="Input title"  type="text" class="input_field" id="name_field" v-model="name">
+    <input placeholder="Nome" title="Input title"  type="text" class="input_field" id="name_field" v-model="registerUser.name">
   </div>
   <div class="input_container">
     <label class="input_label" for="cpf_field">Cpf</label>
-    <input placeholder="Cpf" title="Input title"  type="text" class="input_field" id="cpf_field" v-model="cpf">
+    <input placeholder="Cpf" title="Input title"  type="text" class="input_field" id="cpf_field" v-model="registerUser.cpf">
   </div>
   <div class="input_container">
     <label class="input_label" for="matricula_field">Matrícula</label>
-    <input placeholder="Matricula" title="Input title"  type="text" class="input_field" id="matricula_field" v-model="matricula">
+    <input placeholder="Matricula" title="Input title"  type="text" class="input_field" id="matricula_field" v-model="registerUser.matricula">
   </div>
   <div class="input_container">
     <label class="input_label" for="email_field">E-mail</label>
-    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="email_field" v-model="email">
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="email_field" v-model="registerUser.email">
   </div>
   <div class="input_container">
     <label class="input_label" for="telefone_field">Telefone</label>
-    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="telefone_field" v-model="telefone">
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="telefone_field" v-model="registerUser.telefone">
   </div>
   <div class="input_container">
     <label class="input_label" for="curso_field">Curso</label>
-    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="curso_field" v-model="curso">
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="curso_field" v-model="registerUser.curso">
   </div>
   <div class="input_container">
     <label class="input_label" for="password_field">Senha</label>
-    <input placeholder="Senha" title="Input title" type="password" class="input_field" id="password_field" v-model="senha">
+    <input placeholder="Senha" title="Input title" type="password" class="input_field" id="password_field" v-model="registerUser.password">
   </div>
   <button title="Sign In" type="submit" class="sign-in_btn">
     <span>Registrar</span>
@@ -46,14 +46,14 @@ import axios from 'axios';
 export default {
   data(){
     return {
-      register:{
+      registerUser:{
         name:'',
         cpf:'',
         matricula:'',
         email:'',
         telefone:'',
         curso:'',
-        senha:''
+        password:''
       }
     }
   },
@@ -61,7 +61,7 @@ export default {
     register(event) {
       event.preventDefault();
       axios
-        .post('http://localhost:3001/auth/register', this.register)
+        .post('http://localhost:3001/auth/register', this.registerUser)
         .then((response) => {
           if (response.status === 201) {
             localStorage.setItem("authToken", response.data.acessToken);
