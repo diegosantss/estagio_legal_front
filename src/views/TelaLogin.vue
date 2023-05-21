@@ -6,6 +6,7 @@
     </div>
     <div class="right">
     <button @click="dinamicRoute = '/formularioRegister'">Teste</button>
+    <button @click="dinamicRoute = '/formularioLogin'">Teste</button>
 
     <TemplateLogin v-if="dinamicRoute === '/formularioLogin'"/>
 
