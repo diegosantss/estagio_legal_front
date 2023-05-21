@@ -1,33 +1,41 @@
 <template>
-  <form class="form_container" @submit="login">
-  <div class="logo_container"></div>
+  <form class="form_container" @submit="register">
   <div class="title_container">
-    <p class="title">Faça login na sua conta</p>
+    <p class="title">Faça o seu Registro</p>
   </div>
   <br>
   <div class="input_container">
+    <label class="input_label" for="name_field">Nome</label>
+    <input placeholder="Nome" title="Input title"  type="text" class="input_field" id="name_field" v-model="name">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="cpf_field">Cpf</label>
+    <input placeholder="Cpf" title="Input title"  type="text" class="input_field" id="cpf_field" v-model="cpf">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="matricula_field">Matrícula</label>
+    <input placeholder="Matricula" title="Input title"  type="text" class="input_field" id="matricula_field" v-model="matricula">
+  </div>
+  <div class="input_container">
     <label class="input_label" for="email_field">E-mail</label>
-    <input placeholder="example@example.com" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" v-model="email">
-    <img src="src/assets/email.png" alt="Icone E-mail" class="icon" />
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="email_field" v-model="email">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="telefone_field">Telefone</label>
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="telefone_field" v-model="telefone">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="curso_field">Curso</label>
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="curso_field" v-model="curso">
   </div>
   <div class="input_container">
     <label class="input_label" for="password_field">Senha</label>
-    <input placeholder="Senha" title="Input title" name="input-name" type="password" class="input_field" id="password_field" v-model="senha">
-    <img src="src/assets/senha.png" alt="Icone Senha" class="icon" />
+    <input placeholder="Senha" title="Input title" type="password" class="input_field" id="password_field" v-model="senha">
   </div>
   <button title="Sign In" type="submit" class="sign-in_btn">
-    <span>Entrar</span>
+    <span>Registrar</span>
   </button>
 
-  <div class="separator">
-    <hr class="line">
-    <span>Or</span>
-    <hr class="line">
-  </div>
-  <button title="Sign In" type="submit" class="sign-in_ggl">
-    <img src="../../assets/Gov.br_logo.png" class="logo-gov">
-    <span>Entrar com GOV-BR</span>
-  </button>
   <p class="note">Terms of use &amp; Conditions</p>
 </form>
 </template>
@@ -38,18 +46,22 @@ import axios from 'axios';
 export default {
   data(){
     return {
-      email:'',
-      senha:''
+      register:{
+        name:'',
+        cpf:'',
+        matricula:'',
+        email:'',
+        telefone:'',
+        curso:'',
+        senha:''
+      }
     }
   },
   methods: {
-    login(event) {
+    register(event) {
       event.preventDefault();
       axios
-        .post('http://localhost:3001/auth/login', {
-          email: this.email,
-          password: this.senha,
-        })
+        .post('http://localhost:3001/auth/register', this.register)
         .then((response) => {
           if (response.status === 201) {
             localStorage.setItem("authToken", response.data.acessToken);

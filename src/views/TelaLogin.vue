@@ -5,8 +5,13 @@
       <h1>Bem vindo(a) ao Sistema de Gerênciamento de Estágio do IFPA</h1>
     </div>
     <div class="right">
+    <button></button>
 
-      <TemplateLogin/>
+      <router-link
+        v-bind:to="dinamicRoute"
+        class="nav__dropdown-item"
+      />
+      <!-- <TemplateLogin/> -->
 
     </div>
   </div>
@@ -18,7 +23,8 @@ import TemplateLogin from '../components/template/TemplateLogin.vue';
 
   export default {
     data: () => ({
-      localSmallMenu: false
+      localSmallMenu: false,
+      dinamicRoute: ''
     }),
     components: {
       TemplateLogin
@@ -33,8 +39,6 @@ import TemplateLogin from '../components/template/TemplateLogin.vue';
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 .container {
   display: flex;
