@@ -1,4 +1,4 @@
-
+<!-- 
 <template>
   <div class="menu" :class="{ 'small-menu': smallMenu }">
     <div class="logo">
@@ -180,4 +180,4 @@ export default {
 }
 
 
-</style>
+</style> -->

@@ -35,6 +35,7 @@
 
 <script>
 import axios from 'axios';
+import eventBus from '../../barramento';
 
 export default {
   data(){
@@ -55,6 +56,7 @@ export default {
           if (response.status === 201) {
             localStorage.setItem("authToken", response.data.acessToken);
             this.$router.push('/contact');
+            eventBus.toggleRenderizaSidebar();
           }
         })
         .catch((error) => console.error(error));

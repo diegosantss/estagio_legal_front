@@ -1,20 +1,49 @@
 <template>
 	<div class="app">
 		<!-- Sidebar -->
-		<Sidebar v-if="mostrarsidebar" />
+		<Sidebar v-if="mostrarSidebar"/>
+
+		
 
 		<!-- Content -->
 		<router-view />
 	</div>
+
 </template>
 
-<script setup>
-import { useRoute } from 'vue-router';
+<script>
+import eventBus from './barramento';
+
 import Sidebar from './components/template/Sidebar.vue';
-
-const route = useRoute();
-const mostrarSidebar = route.name !== '/';
-
+export default{
+	data(){
+		return{
+			mostrarSidebar:false,
+		}
+	},
+	methods:{
+		// sideRender(){
+		// 	if(this.$route.fullPath !== '/'){
+		// 		console.log("testendo render")
+		// 		this.mostrarSidebar = true;
+		// 	}
+			
+		// }
+	},
+	watch: {
+    $route() {
+      		if(this.$route.fullPath !== '/'){
+				console.log("testendo render")
+				this.mostrarSidebar = true;
+			}else{
+				this.mostrarSidebar = false;
+			}
+    	},
+  	},
+	components:{
+		Sidebar,
+	},
+};
 </script>
 
 <style lang="scss">

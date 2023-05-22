@@ -1,13 +1,15 @@
-import { createApp } from 'vue';
+import { reactive } from 'vue';
 
-const eventBus = createApp({});
+const eventBus = reactive({
+  renderizaSidebar: false,
 
-eventBus.config.globalProperties.$emitSmallMenu = (isSmallMenu) => {
-  eventBus.emit('smallMenu', isSmallMenu);
-};
+  toggleRenderizaSidebar() {
+    this.renderizaSidebar = !this.renderizaSidebar;
+  },
 
-eventBus.config.globalProperties.$onSmallMenu = (callback) => {
-  eventBus.on('smallMenu', callback);
-};
+  getRenderizaSidebar() {
+    return this.renderizaSidebar;
+  }
+});
 
 export default eventBus;
