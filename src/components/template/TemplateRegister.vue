@@ -1,9 +1,11 @@
 <template>
+  <slot></slot>
   <form class="form_container" @submit="register">
   <div class="title_container">
     <p class="title">Faça o seu Registro</p>
   </div>
   <br>
+<div class="group_input">
   <div class="input_container">
     <label class="input_label" for="name_field">Nome</label>
     <input placeholder="Nome" title="Input title"  type="text" class="input_field" id="name_field" v-model="registerUser.name">
@@ -22,16 +24,17 @@
   </div>
   <div class="input_container">
     <label class="input_label" for="telefone_field">Telefone</label>
-    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="telefone_field" v-model="registerUser.telefone">
+    <input placeholder="99 99999-9999" title="Input title" type="text" class="input_field" id="telefone_field" v-model="registerUser.telefone">
   </div>
   <div class="input_container">
     <label class="input_label" for="curso_field">Curso</label>
-    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="curso_field" v-model="registerUser.curso">
+    <input placeholder="TADS" title="Input title" type="text" class="input_field" id="curso_field" v-model="registerUser.curso">
   </div>
   <div class="input_container">
     <label class="input_label" for="password_field">Senha</label>
     <input placeholder="Senha" title="Input title" type="password" class="input_field" id="password_field" v-model="registerUser.password">
   </div>
+</div>
   <button title="Sign In" type="submit" class="sign-in_btn">
     <span>Registrar</span>
   </button>
@@ -74,7 +77,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+.group_input{
+  display: grid;
+  grid-template-rows: 1fr repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw;
+  max-width: 60vw;
+}
 .form_container {
   width: fit-content;
   height: fit-content;
@@ -152,7 +163,7 @@ export default {
 .input_field {
   width: auto;
   height: 40px;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 10px;
   border-radius: 7px;
   outline: none;
   border: 1px solid #e5e5e5;

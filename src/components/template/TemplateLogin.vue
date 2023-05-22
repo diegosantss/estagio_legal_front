@@ -1,4 +1,5 @@
 <template>
+  <slot></slot>
   <form class="form_container" @submit="login">
   <div class="logo_container"></div>
   <div class="title_container">
@@ -24,7 +25,7 @@
     <span>Or</span>
     <hr class="line">
   </div>
-  <button title="Sign In" type="submit" class="sign-in_ggl">
+   <button title="Sign In" type="submit" class="sign-in_ggl">
     <img src="../../assets/Gov.br_logo.png" class="logo-gov">
     <span>Entrar com GOV-BR</span>
   </button>
@@ -62,8 +63,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form_container {
+  
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -90,6 +92,7 @@ export default {
   filter: drop-shadow(0px 0.5px 0.5px #EFEFEF) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   border-radius: 11px;
 }
+
 
 .title_container {
   display: flex;

@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<!-- Sidebar -->
-		<Sidebar />
+		<Sidebar v-if="mostrarsidebar" />
 
 		<!-- Content -->
 		<router-view />
@@ -9,7 +9,12 @@
 </template>
 
 <script setup>
-import Sidebar from './components/template/Sidebar.vue'
+import { useRoute } from 'vue-router';
+import Sidebar from './components/template/Sidebar.vue';
+
+const route = useRoute();
+const mostrarSidebar = route.name !== '/';
+
 </script>
 
 <style lang="scss">
