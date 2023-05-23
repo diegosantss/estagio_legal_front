@@ -1,62 +1,74 @@
 <template>
   <slot></slot>
-  <form class="form_container" @submit="login">
-  <div class="logo_container"></div>
+  <form class="form_container" @submit="register">
   <div class="title_container">
-    <p class="title">Faça login na sua conta</p>
+    <p class="title">Faça o seu Registro</p>
   </div>
   <br>
+<div class="group_input">
+  <div class="input_container">
+    <label class="input_label" for="name_field">Nome</label>
+    <input placeholder="Nome" title="Input title"  type="text" class="input_field" id="name_field" v-model="registerUser.name">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="cpf_field">Cpf</label>
+    <input placeholder="Cpf" title="Input title"  type="text" class="input_field" id="cpf_field" v-model="registerUser.cpf">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="matricula_field">Matrícula</label>
+    <input placeholder="Matricula" title="Input title"  type="text" class="input_field" id="matricula_field" v-model="registerUser.matricula">
+  </div>
   <div class="input_container">
     <label class="input_label" for="email_field">E-mail</label>
-    <input placeholder="example@example.com" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" v-model="email">
-    <img src="src/assets/email.png" alt="Icone E-mail" class="icon" />
+    <input placeholder="example@example.com" title="Input title" type="text" class="input_field" id="email_field" v-model="registerUser.email">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="telefone_field">Telefone</label>
+    <input placeholder="99 99999-9999" title="Input title" type="text" class="input_field" id="telefone_field" v-model="registerUser.telefone">
+  </div>
+  <div class="input_container">
+    <label class="input_label" for="curso_field">Curso</label>
+    <input placeholder="TADS" title="Input title" type="text" class="input_field" id="curso_field" v-model="registerUser.curso">
   </div>
   <div class="input_container">
     <label class="input_label" for="password_field">Senha</label>
-    <input placeholder="Senha" title="Input title" name="input-name" type="password" class="input_field" id="password_field" v-model="senha">
-    <img src="src/assets/senha.png" alt="Icone Senha" class="icon" />
+    <input placeholder="Senha" title="Input title" type="password" class="input_field" id="password_field" v-model="registerUser.password">
   </div>
+</div>
   <button title="Sign In" type="submit" class="sign-in_btn">
-    <span>Entrar</span>
+    <span>Registrar</span>
   </button>
 
-  <div class="separator">
-    <hr class="line">
-    <span>Or</span>
-    <hr class="line">
-  </div>
-   <button title="Sign In" type="submit" class="sign-in_ggl">
-    <img src="../../assets/Gov.br_logo.png" class="logo-gov">
-    <span>Entrar com GOV-BR</span>
-  </button>
   <p class="note">Terms of use &amp; Conditions</p>
 </form>
 </template>
 
 <script>
 import axios from 'axios';
-import eventBus from '../../barramento';
 
 export default {
   data(){
     return {
-      email:'',
-      senha:''
+      registerUser:{
+        name:'',
+        cpf:'',
+        matricula:'',
+        email:'',
+        telefone:'',
+        curso:'',
+        password:''
+      }
     }
   },
   methods: {
-    login(event) {
+    register(event) {
       event.preventDefault();
       axios
-        .post('http://localhost:3001/auth/login', {
-          email: this.email,
-          password: this.senha,
-        })
+        .post('http://localhost:3001/auth/register', this.registerUser)
         .then((response) => {
           if (response.status === 201) {
             localStorage.setItem("authToken", response.data.acessToken);
             this.$router.push('/contact');
-            eventBus.toggleRenderizaSidebar();
           }
         })
         .catch((error) => console.error(error));
@@ -66,8 +78,15 @@ export default {
 </script>
 
 <style scoped>
+
+.group_input{
+  display: grid;
+  grid-template-rows: 1fr repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw;
+  max-width: 60vw;
+}
 .form_container {
-  
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -94,7 +113,6 @@ export default {
   filter: drop-shadow(0px 0.5px 0.5px #EFEFEF) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   border-radius: 11px;
 }
-
 
 .title_container {
   display: flex;
@@ -145,7 +163,7 @@ export default {
 .input_field {
   width: auto;
   height: 40px;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 10px;
   border-radius: 7px;
   outline: none;
   border: 1px solid #e5e5e5;
