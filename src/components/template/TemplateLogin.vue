@@ -9,12 +9,12 @@
   <div class="input_container">
     <label class="input_label" for="email_field">E-mail</label>
     <input placeholder="example@example.com" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" v-model="email">
-    <img src="src/assets/email.png" alt="Icone E-mail" class="icon" />
+    <img src="../../assets/email.png" alt="Icone E-mail" class="icon" />
   </div>
   <div class="input_container">
     <label class="input_label" for="password_field">Senha</label>
     <input placeholder="Senha" title="Input title" name="input-name" type="password" class="input_field" id="password_field" v-model="senha">
-    <img src="src/assets/senha.png" alt="Icone Senha" class="icon" />
+    <img src="../../assets/senha.png" alt="Icone Senha" class="icon" />
   </div>
   <button title="Sign In" type="submit" class="sign-in_btn">
     <span>Entrar</span>
