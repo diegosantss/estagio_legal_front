@@ -64,7 +64,7 @@ export default {
     register(event) {
       event.preventDefault();
       axios
-        .post('http://localhost:3001/auth/register', this.registerUser)
+        .post('https://estagio-legal-back.onrender.com/auth/register', this.registerUser)
         .then((response) => {
           if (response.status === 201) {
             localStorage.setItem("authToken", response.data.acessToken);

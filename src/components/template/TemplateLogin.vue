@@ -48,7 +48,7 @@ export default {
     login(event) {
       event.preventDefault();
       axios
-        .post('http://localhost:3001/auth/login', {
+        .post('https://estagio-legal-back.onrender.com/auth/login', {
           email: this.email,
           password: this.senha,
         })
