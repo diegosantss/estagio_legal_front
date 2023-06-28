@@ -39,3 +39,15 @@ Nesta etapa inicial, estamos focados na estruturação e na implementação dess
 ### Barra Lateral:
 ![image](https://github.com/diegosantss/estagio_legal_front/assets/100652555/7984b95e-2741-49e0-992c-8eaabb04288e)
 ![image](https://github.com/diegosantss/estagio_legal_front/assets/100652555/14568b50-2e14-4d3d-b454-3a1abea6d186)
+
+# Documentações
+
+## Especificações de Caso de Uso
+https://docs.google.com/document/d/13UkWO-oiUqOKiJHO6GzmxU-mqpMPRI3i/edit?usp=sharing&ouid=109712364421124527175&rtpof=true&sd=true
+https://docs.google.com/document/d/1GJvDhaJ7ZbqMH6uWNt2Zle_aWeE2S3Mh/edit?usp=sharing&ouid=109712364421124527175&rtpof=true&sd=true
+https://docs.google.com/document/d/12AaQFYB-ipX3x77KqvWzpGJp2ALQDByE/edit?usp=sharing&ouid=109712364421124527175&rtpof=true&sd=true
+https://docs.google.com/document/d/1hFU7XU2TY8OGnCmPiY35rl4LbVuSpJiu/edit?usp=sharing&ouid=109712364421124527175&rtpof=true&sd=true
+
+## Diagrama de Caso de Uso
+https://docs.google.com/document/d/1dTzlnnfK2ZDGoibSE96gxVzdIxvnd2luX_rOg063oL4/edit?usp=sharing
+
